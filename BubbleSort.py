@@ -2,30 +2,26 @@ __author__ = 'anhhoangta'
 import  random
 import string
 
-#create a random list with chars
-charList = []
-for index in range (random.randint(5,10)):  #limit amount of chars in list from 5-10 random chars a-->z
-    charList.append(random.choice(string.ascii_lowercase))  #append into charList
-print(charList)
+nameList = []
+for num in range (10):
+    nameList.append("".join(random.sample(string.ascii_lowercase+" ",random.randint(5,10))))
 
-#convert all chars in charList to Ascii number
-numberList =[]
-for char in charList:
-    numberList.append(ord(char))
+for idx in range(len(nameList)):
+    if nameList[idx].find(" ") < 2 or nameList[idx].find(" ")>=4:
+        if len(nameList[idx])>=6:
+            nameList[idx] = nameList[idx].replace(" ","")
+            ran = random.randint(3,4)
+            nameList[idx] = nameList[idx][:ran]+ " " +nameList[idx][ran:]
+        if len(nameList[idx])<6:
+            nameList[idx] = nameList[idx].replace(" ","")
+            if nameList[idx].find(" ")>=2:
+                nameList[idx] = nameList[idx].replace(" ","")
+print(nameList)
 
-#sort above numberList by Bubble Sort method
-for i in range(0, len(numberList)-1):
-    for j in range(i+1, len(numberList)):
-        if numberList[i]>=numberList[j]:
-            temp = numberList[i]
-            numberList[i] = numberList[j]
-            numberList[j] = temp
-
-#reverse numberList after sorting
-numberList.reverse()
-
-#convert again from Ascii numbers to chars with upper letter from Z-->A
-reverseCharList = []
-for number in numberList:
-    reverseCharList.append(chr(number).upper())
-print(reverseCharList)
+for i in range(0, len(nameList)-1):
+    for j in range(i+1, len(nameList)):
+        if ord(nameList[i][0])<=ord(nameList[j][0]):
+            temp = nameList[i]
+            nameList[i] = nameList[j]
+            nameList[j] = temp
+print(nameList)
