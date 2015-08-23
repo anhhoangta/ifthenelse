@@ -20,8 +20,18 @@ print(nameList)
 
 for i in range(0, len(nameList)-1):
     for j in range(i+1, len(nameList)):
+        if nameList[i][0] <= nameList[j][0]:
+            temp = nameList[i]
+            nameList[i] = nameList[j]
+            nameList[j] = temp
+print(nameList)
+
+"""
+for i in range(0, len(nameList)-1):
+    for j in range(i+1, len(nameList)):
         if ord(nameList[i][0])<=ord(nameList[j][0]):
             temp = nameList[i]
             nameList[i] = nameList[j]
             nameList[j] = temp
 print(nameList)
+"""
