@@ -15,6 +15,6 @@ while True:
                         break
             if (isPrinted == False):
                 print(" ", end="")
-            isPrinted = False
+            else: isPrinted = False
         print()
 
